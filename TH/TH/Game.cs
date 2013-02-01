@@ -7,11 +7,19 @@ namespace TH
 {
     class Game
     {
-        public mainForm window;
+        private Stage 
+            currentStage, menuStage, replayStage, 
+            characterSelectionStage, pauseStage, 
+            arenaStage, PvPStage, storyStage, 
+            scoreStage, optionStage, modeSelectionStage;
+        
         public Game(mainForm window)
         {
-            this.window = window;
             SoundPlayer.Init(window.Handle);
+        }
+        public void start()
+        {
+            
         }
     }
 }

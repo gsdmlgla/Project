@@ -8,6 +8,7 @@ namespace TH
     abstract class Entity : NoiseMaker
     {
         private readonly List<Sound> effects = new List<Sound>();
+
         protected abstract List<Sound> getSoundEffects();
         public void play(Sound soundEffect)
         {
