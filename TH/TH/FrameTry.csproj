@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5D4E42AC-93C7-4F88-B37B-B8170153B544}</ProjectGuid>
+    <ProjectGuid>{442ABD89-A7E2-47BD-BC2A-83E43D1F75B9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TH</RootNamespace>
-    <AssemblyName>TH</AssemblyName>
+    <RootNamespace>FrameTry</RootNamespace>
+    <AssemblyName>FrameTry</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -35,14 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Microsoft.DirectX.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.DirectX.DirectSound, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Microsoft.DirectX.DirectSound.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,57 +46,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player\AI.cs" />
-    <Compile Include="Entity\Boss.cs" />
-    <Compile Include="Entity\Hitbox\CircleHitbox.cs" />
-    <Compile Include="Entity\Hitbox\Collidable.cs" />
-    <Compile Include="CommandStream\Command.cs" />
-    <Compile Include="CommandStream\CommandStream.cs" />
-    <Compile Include="Player\Controller.cs" />
-    <Compile Include="CommandStream\FileCommandStream.cs" />
-    <Compile Include="Stages\GameModes.cs" />
-    <Compile Include="Entity\Hitbox\Hitbox.cs" />
-    <Compile Include="Displayed\BackgroundDisplayable.cs" />
-    <Compile Include="Stages\CharacterSelectStage.cs" />
-    <Compile Include="Stages\MainMenuStage.cs" />
-    <Compile Include="Displayed\Layer.cs" />
-    <Compile Include="Stages\MenuItem.cs" />
-    <Compile Include="Stages\ModeSelectStage.cs" />
-    <Compile Include="CommandStream\KeyCommandStream.cs" />
-    <Compile Include="Entity\Movable.cs" />
-    <Compile Include="CommandStream\NetworkCommandStream.cs" />
-    <Compile Include="Player\Player.cs" />
-    <Compile Include="Entity\Hitbox\PolyHitbox.cs" />
-    <Compile Include="Entity\Hitbox\SquareHitbox.cs" />
-    <Compile Include="Stages\ArenaModeCombatStage.cs" />
-    <Compile Include="Stages\CombatStage.cs" />
-    <Compile Include="Entity\Entity.cs" />
-    <Compile Include="Displayed\Displayable.cs" />
-    <Compile Include="Entity\Updater.cs" />
-    <Compile Include="Window.cs">
+    <Compile Include="CenterPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CharacterSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CircleHitbox.cs" />
+    <Compile Include="Collidable.cs" />
+    <Compile Include="CombatPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComputerBossEntity.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window.Designer.cs">
-      <DependentUpon>Window.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game.cs" />
-    <Compile Include="Stages\MenuStage.cs" />
-    <Compile Include="Sound\NoiseMaker.cs" />
-    <Compile Include="Stages\OptionStage.cs" />
-    <Compile Include="Stages\PauseStage.cs" />
+    <Compile Include="BgPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GameModes.cs" />
+    <Compile Include="Hitbox.cs" />
+    <Compile Include="KeyboardControls.cs" />
+    <Compile Include="MainMenuPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModeSelectPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyChar.cs" />
+    <Compile Include="MyChar2Try.cs" />
+    <Compile Include="OptionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PolyHitbox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stages\PvPModeCombatStage.cs" />
-    <Compile Include="Stages\ReplayStage.cs" />
-    <Compile Include="Stages\ScoreStage.cs" />
-    <Compile Include="Displayed\Screen.cs" />
-    <Compile Include="Sound\Sound.cs" />
-    <Compile Include="Sound\SoundPlayer.cs" />
-    <Compile Include="Stages\Stage.cs" />
-    <Compile Include="Stages\StoryModeCombatStage.cs" />
-    <Compile Include="Entity\Team.cs" />
-    <EmbeddedResource Include="Window.resx">
-      <DependentUpon>Window.cs</DependentUpon>
+    <Compile Include="ProtagonistEntity.cs" />
+    <Compile Include="SomeStrangeGuy.cs" />
+    <Compile Include="SquareHitbox.cs" />
+    <Compile Include="Stage1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Team.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -117,9 +106,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -130,7 +117,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\spaceship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

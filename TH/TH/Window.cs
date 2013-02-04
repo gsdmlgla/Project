@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace TH
 {
-    public partial class mainForm : Form
+    public partial class Window : Form
     {
-        public mainForm()
+        public Window()
         {
             InitializeComponent();
         }
@@ -26,5 +26,23 @@ namespace TH
         {
             SoundPlayer.stopLoop(currentLoopID);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Sound s = new Sound("C:\\Users\\Cirno\\Desktop\\TH\\Project\\TH\\bowow.wav");
+            SoundPlayer.play(s);
+        }
+
+        private void mainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void mainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        
     }
 }

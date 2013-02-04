@@ -5,8 +5,8 @@ using System.Text;
 
 namespace TH
 {
-    abstract class Stage
+    class PauseStage : Stage
     {
-        public abstract Stage nextStage();
+        public override Stage nextStage() { return null; }
     }
 }

@@ -15,7 +15,7 @@ namespace TH
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            mainForm win = new mainForm();
+            Window win = new Window();
             Game g = new Game(win);
             Application.Run(win);
         }
