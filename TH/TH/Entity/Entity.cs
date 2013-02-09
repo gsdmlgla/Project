@@ -9,7 +9,8 @@ namespace TH
 {
     abstract class Entity: Collidable, NoiseMaker, Displayable, Movable
     {
-        
+        #region datamembers
+
         protected int hp;
         protected int shownHP;
         protected int currentHP;
@@ -33,7 +34,7 @@ namespace TH
         public bool canCollideWithProjectile = false;
         public bool canCollideWithBoss = true;
         public bool canCollideWithMinion = true;
-        
+        #region properties
         public Image image
         {
             get { return img; }
@@ -136,6 +137,25 @@ namespace TH
             get { return currentTeam; }
             set { currentTeam = value; }
         }
+
+        public void move()
+        {
+            loc.X += XVel;
+            loc.Y += YVel;
+        }
+        public int xVel
+        {
+            get { return XVel; }
+            set { XVel = value; }
+        }
+        public int yVel
+        {
+            get { return YVel; }
+            set { YVel = value; }
+        }
+
+        #endregion
+        #endregion
         /// <summary>
         /// Constructs a new entity.
         /// Every entity will have a default Circle hitbox of size 10 right at the center of the entity.
@@ -158,8 +178,9 @@ namespace TH
             hitbox = new CircleHitbox(this, img.Width / 2, img.Height / 2, 10);
             currentTeam = Team.NEUTRAL;
             hitbox.setHitboxColor(Color.Gray, Color.White);
+            Updater.register(this);
         }
-        public Entity(Image img, Point loc, Hitbox hb, int hp = 1, int mp = 0,int baseSpeed = 10, Team team = Team.NEUTRAL)
+        public Entity(Image img, Point loc, Hitbox hb, bool collidable = false,int hp = 1, int mp = 0,int baseSpeed = 10, Team team = Team.NEUTRAL)
         {
             this.loc = loc;
             this.hp = hp;
@@ -172,11 +193,13 @@ namespace TH
             this.baseSpeed = baseSpeed;
             currentTeam = team;
             hb.setHitboxColor(Color.Gray, Color.White);
+            Updater.register(this, collidable);
         }
         ~Entity()
         {
-
+            Updater.unregister(this);
         }
+        #region methods
         /// <summary>
         /// Checks for collision with another entity.
         /// Uses the hitbox of the entity to check collision.
@@ -339,20 +362,6 @@ namespace TH
             g = Screen.g;
             g.DrawImage(img, centerLocation);
         }
-        public void move()
-        {
-            loc.X += XVel;
-            loc.Y += YVel;
-        }
-        public int xVel
-        {
-            get { return XVel; }
-            set { XVel = value; }
-        }
-        public int yVel
-        {
-            get { return YVel; }
-            set { YVel = value; }
-        }
+        #endregion 
     }
 }

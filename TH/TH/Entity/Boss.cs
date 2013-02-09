@@ -42,8 +42,8 @@ namespace TH
         {
         }
 
-        public Boss(Image img, Point loc, Hitbox hb, int hp = 1, int mp = 0, int baseSpeed = 10, Team team = Team.NEUTRAL)
-            : base(img, loc, hb, hp, mp,baseSpeed, team)
+        public Boss(Image img, Point loc, Hitbox hb,bool collidable = false, int hp = 1, int mp = 0, int baseSpeed = 10, Team team = Team.NEUTRAL)
+            : base(img, loc, hb, collidable ,hp, mp,baseSpeed, team)
         {
         }
 

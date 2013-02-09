@@ -17,6 +17,7 @@ namespace TH
             Application.SetCompatibleTextRenderingDefault(false);
             Window win = new Window();
             Game g = new Game(win);
+            g.start();
             Application.Run(win);
         }
     }

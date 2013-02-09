@@ -15,34 +15,22 @@ namespace TH
         {
             InitializeComponent();
         }
-        public int currentLoopID;
-        private void button1_Click(object sender, EventArgs e)
+
+        private void Window_Paint(object sender, PaintEventArgs e)
         {
-            Sound s = new Sound("C:\\Users\\Cirno\\Downloads\\test1.wav");
-            currentLoopID = SoundPlayer.playInLoop(s);
+            Graphics g = e.Graphics;
+            Brush b = new SolidBrush(Color.PowderBlue);
+            g.FillRectangle(b,200,0,400,600);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            SoundPlayer.stopLoop(currentLoopID);
+
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Window_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Sound s = new Sound("C:\\Users\\Cirno\\Desktop\\TH\\Project\\TH\\bowow.wav");
-            SoundPlayer.play(s);
+            Screen.stop();
         }
-
-        private void mainForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void mainForm_KeyUp(object sender, KeyEventArgs e)
-        {
-           
-        }
-
-        
     }
 }

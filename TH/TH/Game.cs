@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace TH
 {
     class Game
     {
+        #region datamembers
         /// <summary>
         /// Game has 2 players.
         /// </summary>
@@ -75,6 +77,9 @@ namespace TH
             set { if (msstage == null) msstage = value; }
             get { return msstage; }
         }
+        private Thread artist;
+        private Screen s;
+        #endregion
         /// <summary>
         /// constructs and intializes the game
         /// </summary>
@@ -83,18 +88,20 @@ namespace TH
         {
             hwnd = window.Handle;
             SoundPlayer.Init(hwnd);
-            Screen.Init(hwnd);
+            s = new Screen(hwnd);
+        }
+        ~Game()
+        {
+            s.buffer = null;
+            artist.Abort();
         }
         /// <summary>
         /// starts the game
         /// </summary>
         public void start()
         {
-            currentStage = new MenuStage();
-            while (currentStage != null)
-            {
-                currentStage = currentStage.nextStage();
-            }
+            artist = new Thread(new ThreadStart(s.thread));
+            artist.Start();
         }
         /// <summary>
         /// This should load settings from the file. 
