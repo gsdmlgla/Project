@@ -77,9 +77,10 @@ namespace TH
             set { if (msstage == null) msstage = value; }
             get { return msstage; }
         }
-        private Thread artist;
+        public Thread artist;
         private Screen s;
         #endregion
+
         /// <summary>
         /// constructs and intializes the game
         /// </summary>
@@ -89,11 +90,6 @@ namespace TH
             hwnd = window.Handle;
             SoundPlayer.Init(hwnd);
             s = new Screen(hwnd);
-        }
-        ~Game()
-        {
-            s.buffer = null;
-            artist.Abort();
         }
         /// <summary>
         /// starts the game

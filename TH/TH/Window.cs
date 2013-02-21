@@ -16,21 +16,17 @@ namespace TH
             InitializeComponent();
         }
 
-        private void Window_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            Brush b = new SolidBrush(Color.PowderBlue);
-            g.FillRectangle(b,200,0,400,600);
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         private void Window_FormClosing(object sender, FormClosingEventArgs e)
         {
             Screen.stop();
+            //wait for the thread to finish it's work
+            while (Program.game.artist.IsAlive) ;
+        }
+
+        private void Window_Paint(object sender, PaintEventArgs e)
+        {
+            //fill in the initial background
+            e.Graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, 800, 600);
         }
     }
 }

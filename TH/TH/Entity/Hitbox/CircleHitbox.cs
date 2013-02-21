@@ -49,8 +49,8 @@ namespace TH
                 g.FillEllipse(new SolidBrush(inside), x, y, width, width);
                 g.DrawArc(new Pen(new SolidBrush(outside), 2), x, y, width, width, 0, 360);
             }
-        
         }
+
         /// <summary>
         /// Checks collision with the entity that was passed in the parameter.
         /// </summary>
@@ -100,6 +100,7 @@ namespace TH
                     return false;
                 }
             }
+
                 //Circle to Circle collision
             else if(other is CircleHitbox)
             {

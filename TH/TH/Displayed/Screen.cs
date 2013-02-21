@@ -9,14 +9,26 @@ namespace TH
 {
     class Screen
     {
-        public Image buffer;
+        #region datamembers
+        /// <summary>
+        /// flag to signal a quit;
+        /// </summary>
         private static bool quit = false;
+        /// <summary>
+        /// is the thread running flag
+        /// </summary>
         public static bool running
         {
             get { return !quit; }
             set { quit = !value; }
         }
+        /// <summary>
+        /// holds the window's graphics object
+        /// </summary>
         private static Graphics graphic;
+        /// <summary>
+        /// graphics object getter
+        /// </summary>
         public static Graphics g
         {
             get 
@@ -28,19 +40,27 @@ namespace TH
                 return graphic; 
             }
         }
-
         private static List<Layer> layers;
         public static List<Layer> Layers
         {
             get { return layers; }
             set { layers = value; }
         }
+        #endregion
 
+        /// <summary>
+        /// screen constructor that gets the window's graphics object
+        /// </summary>
+        /// <param name="hwnd">window's handle</param>
         public Screen(IntPtr hwnd)
         {
             graphic = Graphics.FromHwnd(hwnd);
         }
 
+        #region methods
+        /// <summary>
+        /// stops the thread
+        /// </summary>
         public static void stop()
         {
             quit = true;
@@ -59,7 +79,7 @@ namespace TH
             Image img = new Bitmap(600,600);
 
             //how big are the gridsquares
-            int gridSquareSize = 4;
+            int gridSquareSize = 1;
 
             //the rectangle array to draw stuff on (the number of gridsqares is total screen units / gridsquaressize ^ 2)
             Rectangle[] rects = new Rectangle[240000 / (gridSquareSize * gridSquareSize)];
@@ -70,7 +90,7 @@ namespace TH
             {
                 for (int y = 0; y < 600; y += gridSquareSize)
                 {
-                    rects[++index] = new Rectangle(x + 200, y, gridSquareSize - 1, gridSquareSize - 1);
+                    rects[++index] = new Rectangle(x + 200, y, gridSquareSize-0, gridSquareSize-0);
                 }
             }
             Graphics g = Graphics.FromImage(img);
@@ -86,16 +106,21 @@ namespace TH
                 //diagnostic displaying
                 graphic.FillRectangle(b, 0, 0, 100, 100);
                 graphic.DrawString(wait.ElapsedMilliseconds.ToString(), f, d, new Point(0, 0));
-
                 //end of diagnostic displaying
+
+                //make pretty colors
+                
                 R += 10;
                 G += 100;
                 B += 7;
                 R %= 255;
                 G %= 255;
                 B %= 255;
+                
+                //pretty colors made
                 wait.Restart();
             }
+        #endregion
         }
     }
 }

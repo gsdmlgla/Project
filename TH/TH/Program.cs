@@ -7,6 +7,11 @@ namespace TH
 {
     static class Program
     {
+        private static Game g;
+        public static Game game
+        {
+            get { return g; }
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +21,7 @@ namespace TH
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Window win = new Window();
-            Game g = new Game(win);
+            g = new Game(win);
             g.start();
             Application.Run(win);
         }

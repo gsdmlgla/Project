@@ -9,6 +9,7 @@ namespace TH
 {
     abstract class Hitbox
     {
+        #region datamembers
         protected Entity owner;
         protected int cx;
         protected int cy;
@@ -23,6 +24,7 @@ namespace TH
         protected Color outside;
         protected Color inside;
         protected bool show = true;
+
         /// <summary>
         /// Gets the owner of the hitbox.
         /// </summary>
@@ -72,6 +74,7 @@ namespace TH
             get { return width; }
             set { width = value; }
         }
+
         /// <summary>
         /// Gets or sets the width of the hitbox.
         /// Changing this variable for circlehitboxes will not do anything.
@@ -90,6 +93,7 @@ namespace TH
             get { return show; }
             set { show = value; }
         }
+        #endregion
 
         /// <summary>
         /// Constructs a hitbox.
